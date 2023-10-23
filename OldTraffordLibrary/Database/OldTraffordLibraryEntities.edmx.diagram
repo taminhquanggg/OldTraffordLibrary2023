@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="15952a1f9f7240cfae3483a84b7d30a5" Name="Diagram1">
+        <EntityTypeShape EntityType="OldTraffordLibraryModel.sysdiagram" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OldTraffordLibraryModel.tbl_Book" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OldTraffordLibraryModel.tbl_LoanVoucher" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="OldTraffordLibraryModel.tbl_LoanVoucherDetail" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OldTraffordLibraryModel.tbl_Reader" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OldTraffordLibraryModel.tbl_User" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <AssociationConnector Association="OldTraffordLibraryModel.FK__tbl_LoanV__BookI__6EF57B66" ManuallyRouted="false" />
+        <AssociationConnector Association="OldTraffordLibraryModel.FK__tbl_LoanV__Reade__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="OldTraffordLibraryModel.FK__tbl_LoanV__UserI__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="OldTraffordLibraryModel.FK__tbl_LoanV__Vouch__4222D4EF" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

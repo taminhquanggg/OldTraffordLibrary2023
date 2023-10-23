@@ -1,0 +1,422 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="OldTraffordLibraryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tbl_Book">
+          <Key>
+            <PropertyRef Name="BookID" />
+          </Key>
+          <Property Name="AutoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="QuickCode" Type="varchar" MaxLength="10" />
+          <Property Name="BookTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="TypeOfBook" Type="nvarchar" MaxLength="50" />
+          <Property Name="Author" Type="nvarchar" MaxLength="50" />
+          <Property Name="Publisher" Type="nvarchar" MaxLength="50" />
+          <Property Name="Amount" Type="int" />
+          <Property Name="Position" Type="int" />
+          <Property Name="Content" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="tbl_LoanVoucher">
+          <Key>
+            <PropertyRef Name="VoucherID" />
+          </Key>
+          <Property Name="AutoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VoucherID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ReaderID" Type="varchar" MaxLength="10" />
+          <Property Name="UserID" Type="varchar" MaxLength="30" />
+          <Property Name="BorrowDate" Type="date" />
+          <Property Name="AppointmentDate" Type="date" />
+          <Property Name="ReturnDate" Type="date" />
+          <Property Name="Status" Type="varchar" MaxLength="10" />
+          <Property Name="IsConfirmLoan" Type="bit" />
+          <Property Name="CofirmLoanTime" Type="datetime" />
+          <Property Name="IsConfirmReturn" Type="bit" />
+          <Property Name="CofirmReturnTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_LoanVoucherDetail">
+          <Key>
+            <PropertyRef Name="AutoID" />
+          </Key>
+          <Property Name="AutoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VoucherID" Type="varchar" MaxLength="10" />
+          <Property Name="BookID" Type="varchar" MaxLength="10" />
+          <Property Name="NumOfLoan" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_Reader">
+          <Key>
+            <PropertyRef Name="ReaderID" />
+          </Key>
+          <Property Name="AutoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReaderID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ReaderName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateOfBirth" Type="date" />
+          <Property Name="Sex" Type="nvarchar" MaxLength="5" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="20" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="RegistrationDate" Type="date" />
+          <Property Name="ExpirationDate" Type="date" />
+        </EntityType>
+        <EntityType Name="tbl_User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="AutoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="30" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__tbl_LoanV__BookI__6EF57B66">
+          <End Role="tbl_Book" Type="Self.tbl_Book" Multiplicity="0..1" />
+          <End Role="tbl_LoanVoucherDetail" Type="Self.tbl_LoanVoucherDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Book">
+              <PropertyRef Name="BookID" />
+            </Principal>
+            <Dependent Role="tbl_LoanVoucherDetail">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_LoanV__Reade__3E52440B">
+          <End Role="tbl_Reader" Type="Self.tbl_Reader" Multiplicity="0..1" />
+          <End Role="tbl_LoanVoucher" Type="Self.tbl_LoanVoucher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Reader">
+              <PropertyRef Name="ReaderID" />
+            </Principal>
+            <Dependent Role="tbl_LoanVoucher">
+              <PropertyRef Name="ReaderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_LoanV__UserI__3F466844">
+          <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+          <End Role="tbl_LoanVoucher" Type="Self.tbl_LoanVoucher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tbl_LoanVoucher">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_LoanV__Vouch__4222D4EF">
+          <End Role="tbl_LoanVoucher" Type="Self.tbl_LoanVoucher" Multiplicity="0..1" />
+          <End Role="tbl_LoanVoucherDetail" Type="Self.tbl_LoanVoucherDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_LoanVoucher">
+              <PropertyRef Name="VoucherID" />
+            </Principal>
+            <Dependent Role="tbl_LoanVoucherDetail">
+              <PropertyRef Name="VoucherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OldTraffordLibraryModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Book" EntityType="Self.tbl_Book" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_LoanVoucher" EntityType="Self.tbl_LoanVoucher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_LoanVoucherDetail" EntityType="Self.tbl_LoanVoucherDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Reader" EntityType="Self.tbl_Reader" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_User" EntityType="Self.tbl_User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tbl_LoanV__BookI__6EF57B66" Association="Self.FK__tbl_LoanV__BookI__6EF57B66">
+            <End Role="tbl_Book" EntitySet="tbl_Book" />
+            <End Role="tbl_LoanVoucherDetail" EntitySet="tbl_LoanVoucherDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_LoanV__Reade__3E52440B" Association="Self.FK__tbl_LoanV__Reade__3E52440B">
+            <End Role="tbl_Reader" EntitySet="tbl_Reader" />
+            <End Role="tbl_LoanVoucher" EntitySet="tbl_LoanVoucher" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_LoanV__UserI__3F466844" Association="Self.FK__tbl_LoanV__UserI__3F466844">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_LoanVoucher" EntitySet="tbl_LoanVoucher" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_LoanV__Vouch__4222D4EF" Association="Self.FK__tbl_LoanV__Vouch__4222D4EF">
+            <End Role="tbl_LoanVoucher" EntitySet="tbl_LoanVoucher" />
+            <End Role="tbl_LoanVoucherDetail" EntitySet="tbl_LoanVoucherDetail" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OldTraffordLibraryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tbl_Book">
+          <Key>
+            <PropertyRef Name="BookID" />
+          </Key>
+          <Property Name="AutoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="QuickCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="BookTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TypeOfBook" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Author" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Publisher" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Int32" />
+          <Property Name="Position" Type="Int32" />
+          <Property Name="Content" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_LoanVoucherDetail" Relationship="Self.FK__tbl_LoanV__BookI__6EF57B66" FromRole="tbl_Book" ToRole="tbl_LoanVoucherDetail" />
+        </EntityType>
+        <EntityType Name="tbl_LoanVoucher">
+          <Key>
+            <PropertyRef Name="VoucherID" />
+          </Key>
+          <Property Name="AutoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VoucherID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ReaderID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="UserID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="BorrowDate" Type="DateTime" Precision="0" />
+          <Property Name="AppointmentDate" Type="DateTime" Precision="0" />
+          <Property Name="ReturnDate" Type="DateTime" Precision="0" />
+          <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="IsConfirmLoan" Type="Boolean" />
+          <Property Name="CofirmLoanTime" Type="DateTime" Precision="3" />
+          <Property Name="IsConfirmReturn" Type="Boolean" />
+          <Property Name="CofirmReturnTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_Reader" Relationship="Self.FK__tbl_LoanV__Reade__3E52440B" FromRole="tbl_LoanVoucher" ToRole="tbl_Reader" />
+          <NavigationProperty Name="tbl_User" Relationship="Self.FK__tbl_LoanV__UserI__3F466844" FromRole="tbl_LoanVoucher" ToRole="tbl_User" />
+          <NavigationProperty Name="tbl_LoanVoucherDetail" Relationship="Self.FK__tbl_LoanV__Vouch__4222D4EF" FromRole="tbl_LoanVoucher" ToRole="tbl_LoanVoucherDetail" />
+        </EntityType>
+        <EntityType Name="tbl_LoanVoucherDetail">
+          <Key>
+            <PropertyRef Name="AutoID" />
+          </Key>
+          <Property Name="AutoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VoucherID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="BookID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NumOfLoan" Type="Int32" />
+          <NavigationProperty Name="tbl_Book" Relationship="Self.FK__tbl_LoanV__BookI__6EF57B66" FromRole="tbl_LoanVoucherDetail" ToRole="tbl_Book" />
+          <NavigationProperty Name="tbl_LoanVoucher" Relationship="Self.FK__tbl_LoanV__Vouch__4222D4EF" FromRole="tbl_LoanVoucherDetail" ToRole="tbl_LoanVoucher" />
+        </EntityType>
+        <EntityType Name="tbl_Reader">
+          <Key>
+            <PropertyRef Name="ReaderID" />
+          </Key>
+          <Property Name="AutoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReaderID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ReaderName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="Sex" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RegistrationDate" Type="DateTime" Precision="0" />
+          <Property Name="ExpirationDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="tbl_LoanVoucher" Relationship="Self.FK__tbl_LoanV__Reade__3E52440B" FromRole="tbl_Reader" ToRole="tbl_LoanVoucher" />
+        </EntityType>
+        <EntityType Name="tbl_User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="AutoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_LoanVoucher" Relationship="Self.FK__tbl_LoanV__UserI__3F466844" FromRole="tbl_User" ToRole="tbl_LoanVoucher" />
+        </EntityType>
+        <Association Name="FK__tbl_LoanV__BookI__6EF57B66">
+          <End Role="tbl_Book" Type="Self.tbl_Book" Multiplicity="0..1" />
+          <End Role="tbl_LoanVoucherDetail" Type="Self.tbl_LoanVoucherDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Book">
+              <PropertyRef Name="BookID" />
+            </Principal>
+            <Dependent Role="tbl_LoanVoucherDetail">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_LoanV__Reade__3E52440B">
+          <End Role="tbl_Reader" Type="Self.tbl_Reader" Multiplicity="0..1" />
+          <End Role="tbl_LoanVoucher" Type="Self.tbl_LoanVoucher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Reader">
+              <PropertyRef Name="ReaderID" />
+            </Principal>
+            <Dependent Role="tbl_LoanVoucher">
+              <PropertyRef Name="ReaderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_LoanV__UserI__3F466844">
+          <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+          <End Role="tbl_LoanVoucher" Type="Self.tbl_LoanVoucher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tbl_LoanVoucher">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_LoanV__Vouch__4222D4EF">
+          <End Role="tbl_LoanVoucher" Type="Self.tbl_LoanVoucher" Multiplicity="0..1" />
+          <End Role="tbl_LoanVoucherDetail" Type="Self.tbl_LoanVoucherDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_LoanVoucher">
+              <PropertyRef Name="VoucherID" />
+            </Principal>
+            <Dependent Role="tbl_LoanVoucherDetail">
+              <PropertyRef Name="VoucherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OldTraffordLibraryEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="tbl_Book" EntityType="Self.tbl_Book" />
+          <EntitySet Name="tbl_LoanVoucher" EntityType="Self.tbl_LoanVoucher" />
+          <EntitySet Name="tbl_LoanVoucherDetail" EntityType="Self.tbl_LoanVoucherDetail" />
+          <EntitySet Name="tbl_Reader" EntityType="Self.tbl_Reader" />
+          <EntitySet Name="tbl_User" EntityType="Self.tbl_User" />
+          <AssociationSet Name="FK__tbl_LoanV__BookI__6EF57B66" Association="Self.FK__tbl_LoanV__BookI__6EF57B66">
+            <End Role="tbl_Book" EntitySet="tbl_Book" />
+            <End Role="tbl_LoanVoucherDetail" EntitySet="tbl_LoanVoucherDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_LoanV__Reade__3E52440B" Association="Self.FK__tbl_LoanV__Reade__3E52440B">
+            <End Role="tbl_Reader" EntitySet="tbl_Reader" />
+            <End Role="tbl_LoanVoucher" EntitySet="tbl_LoanVoucher" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_LoanV__UserI__3F466844" Association="Self.FK__tbl_LoanV__UserI__3F466844">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_LoanVoucher" EntitySet="tbl_LoanVoucher" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_LoanV__Vouch__4222D4EF" Association="Self.FK__tbl_LoanV__Vouch__4222D4EF">
+            <End Role="tbl_LoanVoucher" EntitySet="tbl_LoanVoucher" />
+            <End Role="tbl_LoanVoucherDetail" EntitySet="tbl_LoanVoucherDetail" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OldTraffordLibraryModelStoreContainer" CdmEntityContainer="OldTraffordLibraryEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="OldTraffordLibraryModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Book">
+            <EntityTypeMapping TypeName="OldTraffordLibraryModel.tbl_Book">
+              <MappingFragment StoreEntitySet="tbl_Book">
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="AutoID" ColumnName="AutoID" />
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
+                <ScalarProperty Name="QuickCode" ColumnName="QuickCode" />
+                <ScalarProperty Name="BookTitle" ColumnName="BookTitle" />
+                <ScalarProperty Name="TypeOfBook" ColumnName="TypeOfBook" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="Publisher" ColumnName="Publisher" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_LoanVoucher">
+            <EntityTypeMapping TypeName="OldTraffordLibraryModel.tbl_LoanVoucher">
+              <MappingFragment StoreEntitySet="tbl_LoanVoucher">
+                <ScalarProperty Name="AutoID" ColumnName="AutoID" />
+                <ScalarProperty Name="VoucherID" ColumnName="VoucherID" />
+                <ScalarProperty Name="ReaderID" ColumnName="ReaderID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="BorrowDate" ColumnName="BorrowDate" />
+                <ScalarProperty Name="AppointmentDate" ColumnName="AppointmentDate" />
+                <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IsConfirmLoan" ColumnName="IsConfirmLoan" />
+                <ScalarProperty Name="CofirmLoanTime" ColumnName="CofirmLoanTime" />
+                <ScalarProperty Name="IsConfirmReturn" ColumnName="IsConfirmReturn" />
+                <ScalarProperty Name="CofirmReturnTime" ColumnName="CofirmReturnTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_LoanVoucherDetail">
+            <EntityTypeMapping TypeName="OldTraffordLibraryModel.tbl_LoanVoucherDetail">
+              <MappingFragment StoreEntitySet="tbl_LoanVoucherDetail">
+                <ScalarProperty Name="AutoID" ColumnName="AutoID" />
+                <ScalarProperty Name="VoucherID" ColumnName="VoucherID" />
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
+                <ScalarProperty Name="NumOfLoan" ColumnName="NumOfLoan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Reader">
+            <EntityTypeMapping TypeName="OldTraffordLibraryModel.tbl_Reader">
+              <MappingFragment StoreEntitySet="tbl_Reader">
+                <ScalarProperty Name="AutoID" ColumnName="AutoID" />
+                <ScalarProperty Name="ReaderID" ColumnName="ReaderID" />
+                <ScalarProperty Name="ReaderName" ColumnName="ReaderName" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+                <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_User">
+            <EntityTypeMapping TypeName="OldTraffordLibraryModel.tbl_User">
+              <MappingFragment StoreEntitySet="tbl_User">
+                <ScalarProperty Name="AutoID" ColumnName="AutoID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
