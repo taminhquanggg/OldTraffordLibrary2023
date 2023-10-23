@@ -31,20 +31,16 @@ namespace OldTraffordLibrary.VIEW.DialogForm
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddReader));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.dtExpirationDate = new DevExpress.XtraEditors.DateEdit();
-            this.dtRegistrationDate = new DevExpress.XtraEditors.DateEdit();
             this.txtAddress = new DevExpress.XtraEditors.TextEdit();
             this.txtPhoneNum = new DevExpress.XtraEditors.TextEdit();
-            this.cbSex = new DevExpress.XtraEditors.ComboBoxEdit();
             this.txtReaderName = new DevExpress.XtraEditors.TextEdit();
             this.txtReaderID = new DevExpress.XtraEditors.TextEdit();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.btnExit = new DevExpress.XtraEditors.SimpleButton();
-            this.txtReaderName1 = new DevExpress.XtraEditors.TextEdit();
+            this.txtDateOfBirth = new DevExpress.XtraEditors.TextEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -59,25 +55,21 @@ namespace OldTraffordLibrary.VIEW.DialogForm
             this.emptySpaceItem8 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem9 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem10 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtDateOfBirth = new DevExpress.XtraLayout.LayoutControlItem();
+            this.t = new DevExpress.XtraLayout.LayoutControlItem();
+            this.txtSex = new DevExpress.XtraEditors.TextEdit();
+            this.txtDateOfBirth1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.txtEmail = new DevExpress.XtraEditors.TextEdit();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtExpirationDate.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtExpirationDate.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtRegistrationDate.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtRegistrationDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAddress.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPhoneNum.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbSex.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReaderName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReaderID.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtReaderName1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDateOfBirth.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
@@ -92,23 +84,24 @@ namespace OldTraffordLibrary.VIEW.DialogForm
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDateOfBirth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.t)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSex.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDateOfBirth1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmail.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
             // 
-            this.layoutControl1.Controls.Add(this.dtExpirationDate);
-            this.layoutControl1.Controls.Add(this.dtRegistrationDate);
             this.layoutControl1.Controls.Add(this.txtAddress);
             this.layoutControl1.Controls.Add(this.txtPhoneNum);
-            this.layoutControl1.Controls.Add(this.cbSex);
             this.layoutControl1.Controls.Add(this.txtReaderName);
             this.layoutControl1.Controls.Add(this.txtReaderID);
             this.layoutControl1.Controls.Add(this.btnSave);
             this.layoutControl1.Controls.Add(this.btnExit);
-            this.layoutControl1.Controls.Add(this.txtReaderName1);
+            this.layoutControl1.Controls.Add(this.txtDateOfBirth);
+            this.layoutControl1.Controls.Add(this.txtSex);
+            this.layoutControl1.Controls.Add(this.txtEmail);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
@@ -118,94 +111,37 @@ namespace OldTraffordLibrary.VIEW.DialogForm
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
-            // dtExpirationDate
-            // 
-            this.dtExpirationDate.EditValue = null;
-            this.dtExpirationDate.Location = new System.Drawing.Point(85, 250);
-            this.dtExpirationDate.Name = "dtExpirationDate";
-            this.dtExpirationDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtExpirationDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtExpirationDate.Properties.CalendarTimeProperties.DisplayFormat.FormatString = "dd/MM/yyyy";
-            this.dtExpirationDate.Properties.CalendarTimeProperties.EditFormat.FormatString = "dd/MM/yyyy";
-            this.dtExpirationDate.Properties.DisplayFormat.FormatString = "dd/MM/yyyy";
-            this.dtExpirationDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dtExpirationDate.Properties.EditFormat.FormatString = "dd/MM/yyyy";
-            this.dtExpirationDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dtExpirationDate.Properties.Mask.EditMask = "dd/MM/yyyy";
-            this.dtExpirationDate.Properties.NullText = "Nhập ngày hết hạn";
-            this.dtExpirationDate.Size = new System.Drawing.Size(238, 20);
-            this.dtExpirationDate.StyleController = this.layoutControl1;
-            this.dtExpirationDate.TabIndex = 16;
-            // 
-            // dtRegistrationDate
-            // 
-            this.dtRegistrationDate.EditValue = null;
-            this.dtRegistrationDate.Location = new System.Drawing.Point(85, 216);
-            this.dtRegistrationDate.Name = "dtRegistrationDate";
-            this.dtRegistrationDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtRegistrationDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtRegistrationDate.Properties.CalendarTimeProperties.DisplayFormat.FormatString = "dd/MM/yyyy";
-            this.dtRegistrationDate.Properties.CalendarTimeProperties.EditFormat.FormatString = "dd/MM/yyyy";
-            this.dtRegistrationDate.Properties.DisplayFormat.FormatString = "dd/MM/yyyy";
-            this.dtRegistrationDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dtRegistrationDate.Properties.EditFormat.FormatString = "dd/MM/yyyy";
-            this.dtRegistrationDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dtRegistrationDate.Properties.Mask.EditMask = "dd/MM/yyyy";
-            this.dtRegistrationDate.Properties.NullText = "Nhập ngày đăng ký";
-            this.dtRegistrationDate.Size = new System.Drawing.Size(238, 20);
-            this.dtRegistrationDate.StyleController = this.layoutControl1;
-            this.dtRegistrationDate.TabIndex = 15;
-            // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(85, 182);
+            this.txtAddress.Location = new System.Drawing.Point(81, 182);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Properties.NullText = "Nhập địa chỉ";
-            this.txtAddress.Size = new System.Drawing.Size(238, 20);
+            this.txtAddress.Size = new System.Drawing.Size(242, 20);
             this.txtAddress.StyleController = this.layoutControl1;
             this.txtAddress.TabIndex = 9;
             // 
             // txtPhoneNum
             // 
-            this.txtPhoneNum.Location = new System.Drawing.Point(85, 148);
+            this.txtPhoneNum.Location = new System.Drawing.Point(81, 148);
             this.txtPhoneNum.Name = "txtPhoneNum";
             this.txtPhoneNum.Properties.NullText = "Nhập số điện thoại";
-            this.txtPhoneNum.Size = new System.Drawing.Size(238, 20);
+            this.txtPhoneNum.Size = new System.Drawing.Size(242, 20);
             this.txtPhoneNum.StyleController = this.layoutControl1;
             this.txtPhoneNum.TabIndex = 8;
             // 
-            // cbSex
-            // 
-            this.cbSex.Location = new System.Drawing.Point(85, 114);
-            this.cbSex.Name = "cbSex";
-            this.cbSex.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbSex.Properties.Items.AddRange(new object[] {
-            "Nam",
-            "Nữ"});
-            this.cbSex.Properties.NullText = "Nhập giới tính";
-            this.cbSex.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cbSex.Size = new System.Drawing.Size(238, 20);
-            this.cbSex.StyleController = this.layoutControl1;
-            this.cbSex.TabIndex = 7;
-            // 
             // txtReaderName
             // 
-            this.txtReaderName.Location = new System.Drawing.Point(85, 46);
+            this.txtReaderName.Location = new System.Drawing.Point(81, 46);
             this.txtReaderName.Name = "txtReaderName";
-            this.txtReaderName.Size = new System.Drawing.Size(238, 20);
+            this.txtReaderName.Size = new System.Drawing.Size(242, 20);
             this.txtReaderName.StyleController = this.layoutControl1;
             this.txtReaderName.TabIndex = 5;
             // 
             // txtReaderID
             // 
-            this.txtReaderID.Location = new System.Drawing.Point(85, 12);
+            this.txtReaderID.Location = new System.Drawing.Point(81, 12);
             this.txtReaderID.Name = "txtReaderID";
-            this.txtReaderID.Size = new System.Drawing.Size(238, 20);
+            this.txtReaderID.Size = new System.Drawing.Size(242, 20);
             this.txtReaderID.StyleController = this.layoutControl1;
             this.txtReaderID.TabIndex = 4;
             // 
@@ -232,13 +168,13 @@ namespace OldTraffordLibrary.VIEW.DialogForm
             this.btnExit.Text = "Hủy";
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // txtReaderName1
+            // txtDateOfBirth
             // 
-            this.txtReaderName1.Location = new System.Drawing.Point(85, 80);
-            this.txtReaderName1.Name = "txtReaderName1";
-            this.txtReaderName1.Size = new System.Drawing.Size(238, 20);
-            this.txtReaderName1.StyleController = this.layoutControl1;
-            this.txtReaderName1.TabIndex = 5;
+            this.txtDateOfBirth.Location = new System.Drawing.Point(81, 80);
+            this.txtDateOfBirth.Name = "txtDateOfBirth";
+            this.txtDateOfBirth.Size = new System.Drawing.Size(242, 20);
+            this.txtDateOfBirth.StyleController = this.layoutControl1;
+            this.txtDateOfBirth.TabIndex = 5;
             // 
             // Root
             // 
@@ -247,7 +183,6 @@ namespace OldTraffordLibrary.VIEW.DialogForm
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem1,
             this.layoutControlItem2,
-            this.layoutControlItem4,
             this.layoutControlItem5,
             this.layoutControlItem6,
             this.layoutControlItem11,
@@ -262,9 +197,9 @@ namespace OldTraffordLibrary.VIEW.DialogForm
             this.emptySpaceItem8,
             this.emptySpaceItem9,
             this.emptySpaceItem10,
-            this.layoutControlItem7,
-            this.layoutControlItem8,
-            this.txtDateOfBirth});
+            this.t,
+            this.txtDateOfBirth1,
+            this.layoutControlItem3});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(335, 321);
             this.Root.TextVisible = false;
@@ -276,7 +211,7 @@ namespace OldTraffordLibrary.VIEW.DialogForm
             this.layoutControlItem1.Name = "layoutControlItem1";
             this.layoutControlItem1.Size = new System.Drawing.Size(315, 24);
             this.layoutControlItem1.Text = "Mã độc giả:";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(70, 13);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(66, 13);
             // 
             // layoutControlItem2
             // 
@@ -285,16 +220,7 @@ namespace OldTraffordLibrary.VIEW.DialogForm
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Size = new System.Drawing.Size(315, 24);
             this.layoutControlItem2.Text = "Tên độc giả:";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(70, 13);
-            // 
-            // layoutControlItem4
-            // 
-            this.layoutControlItem4.Control = this.cbSex;
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 102);
-            this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(315, 24);
-            this.layoutControlItem4.Text = "Giới tính:";
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(70, 13);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(66, 13);
             // 
             // layoutControlItem5
             // 
@@ -303,7 +229,7 @@ namespace OldTraffordLibrary.VIEW.DialogForm
             this.layoutControlItem5.Name = "layoutControlItem5";
             this.layoutControlItem5.Size = new System.Drawing.Size(315, 24);
             this.layoutControlItem5.Text = "Số điện thoại:";
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(70, 13);
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(66, 13);
             // 
             // layoutControlItem6
             // 
@@ -312,7 +238,7 @@ namespace OldTraffordLibrary.VIEW.DialogForm
             this.layoutControlItem6.Name = "layoutControlItem6";
             this.layoutControlItem6.Size = new System.Drawing.Size(315, 24);
             this.layoutControlItem6.Text = "Địa chỉ:";
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(70, 13);
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(66, 13);
             // 
             // layoutControlItem11
             // 
@@ -422,45 +348,65 @@ namespace OldTraffordLibrary.VIEW.DialogForm
             this.emptySpaceItem9.AllowHotTrack = false;
             this.emptySpaceItem9.Location = new System.Drawing.Point(0, 228);
             this.emptySpaceItem9.Name = "emptySpaceItem9";
-            this.emptySpaceItem9.Size = new System.Drawing.Size(315, 10);
+            this.emptySpaceItem9.Size = new System.Drawing.Size(315, 20);
             this.emptySpaceItem9.TextSize = new System.Drawing.Size(0, 0);
             // 
             // emptySpaceItem10
             // 
             this.emptySpaceItem10.AllowHotTrack = false;
-            this.emptySpaceItem10.Location = new System.Drawing.Point(0, 262);
+            this.emptySpaceItem10.Location = new System.Drawing.Point(0, 248);
             this.emptySpaceItem10.Name = "emptySpaceItem10";
-            this.emptySpaceItem10.Size = new System.Drawing.Size(315, 12);
+            this.emptySpaceItem10.Size = new System.Drawing.Size(315, 26);
             this.emptySpaceItem10.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // layoutControlItem7
+            // t
             // 
-            this.layoutControlItem7.Control = this.dtRegistrationDate;
-            this.layoutControlItem7.Location = new System.Drawing.Point(0, 204);
-            this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(315, 24);
-            this.layoutControlItem7.Text = "Ngày đăng ký:";
-            this.layoutControlItem7.TextSize = new System.Drawing.Size(70, 13);
+            this.t.Control = this.txtDateOfBirth;
+            this.t.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.t.CustomizationFormText = "Tên độc giả:";
+            this.t.Location = new System.Drawing.Point(0, 68);
+            this.t.Name = "t";
+            this.t.Size = new System.Drawing.Size(315, 24);
+            this.t.Text = "Ngày sinh:";
+            this.t.TextSize = new System.Drawing.Size(66, 13);
             // 
-            // layoutControlItem8
+            // txtSex
             // 
-            this.layoutControlItem8.Control = this.dtExpirationDate;
-            this.layoutControlItem8.Location = new System.Drawing.Point(0, 238);
-            this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(315, 24);
-            this.layoutControlItem8.Text = "Ngày hết hạn:";
-            this.layoutControlItem8.TextSize = new System.Drawing.Size(70, 13);
+            this.txtSex.Location = new System.Drawing.Point(81, 114);
+            this.txtSex.Name = "txtSex";
+            this.txtSex.Size = new System.Drawing.Size(242, 20);
+            this.txtSex.StyleController = this.layoutControl1;
+            this.txtSex.TabIndex = 5;
             // 
-            // txtDateOfBirth
+            // txtDateOfBirth1
             // 
-            this.txtDateOfBirth.Control = this.txtReaderName1;
-            this.txtDateOfBirth.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.txtDateOfBirth.CustomizationFormText = "Tên độc giả:";
-            this.txtDateOfBirth.Location = new System.Drawing.Point(0, 68);
-            this.txtDateOfBirth.Name = "txtDateOfBirth";
-            this.txtDateOfBirth.Size = new System.Drawing.Size(315, 24);
-            this.txtDateOfBirth.Text = "Ngày sinh:";
-            this.txtDateOfBirth.TextSize = new System.Drawing.Size(70, 13);
+            this.txtDateOfBirth1.Control = this.txtSex;
+            this.txtDateOfBirth1.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.txtDateOfBirth1.CustomizationFormText = "Tên độc giả:";
+            this.txtDateOfBirth1.Location = new System.Drawing.Point(0, 102);
+            this.txtDateOfBirth1.Name = "txtDateOfBirth1";
+            this.txtDateOfBirth1.Size = new System.Drawing.Size(315, 24);
+            this.txtDateOfBirth1.Text = "Giới tính:";
+            this.txtDateOfBirth1.TextSize = new System.Drawing.Size(66, 13);
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(81, 216);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(242, 20);
+            this.txtEmail.StyleController = this.layoutControl1;
+            this.txtEmail.TabIndex = 9;
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.txtEmail;
+            this.layoutControlItem3.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.layoutControlItem3.CustomizationFormText = "Địa chỉ:";
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 204);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(315, 24);
+            this.layoutControlItem3.Text = "Email:";
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(66, 13);
             // 
             // frmAddReader
             // 
@@ -477,20 +423,14 @@ namespace OldTraffordLibrary.VIEW.DialogForm
             this.Load += new System.EventHandler(this.frmAddReader_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dtExpirationDate.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtExpirationDate.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtRegistrationDate.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtRegistrationDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAddress.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPhoneNum.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbSex.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReaderName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReaderID.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtReaderName1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDateOfBirth.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
@@ -505,9 +445,11 @@ namespace OldTraffordLibrary.VIEW.DialogForm
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDateOfBirth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.t)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSex.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDateOfBirth1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmail.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -517,7 +459,6 @@ namespace OldTraffordLibrary.VIEW.DialogForm
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
         private DevExpress.XtraEditors.TextEdit txtAddress;
         private DevExpress.XtraEditors.TextEdit txtPhoneNum;
-        private DevExpress.XtraEditors.ComboBoxEdit cbSex;
         private DevExpress.XtraEditors.TextEdit txtReaderName;
         private DevExpress.XtraEditors.TextEdit txtReaderID;
         private DevExpress.XtraEditors.SimpleButton btnSave;
@@ -525,7 +466,6 @@ namespace OldTraffordLibrary.VIEW.DialogForm
         private DevExpress.XtraLayout.LayoutControlGroup Root;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
@@ -540,11 +480,11 @@ namespace OldTraffordLibrary.VIEW.DialogForm
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem8;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem9;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem10;
-        private DevExpress.XtraEditors.DateEdit dtExpirationDate;
-        private DevExpress.XtraEditors.DateEdit dtRegistrationDate;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
-        private DevExpress.XtraEditors.TextEdit txtReaderName1;
-        private DevExpress.XtraLayout.LayoutControlItem txtDateOfBirth;
+        private DevExpress.XtraEditors.TextEdit txtDateOfBirth;
+        private DevExpress.XtraLayout.LayoutControlItem t;
+        private DevExpress.XtraEditors.TextEdit txtSex;
+        private DevExpress.XtraLayout.LayoutControlItem txtDateOfBirth1;
+        private DevExpress.XtraEditors.TextEdit txtEmail;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
     }
 }
