@@ -81,6 +81,54 @@ namespace OldTraffordLibrary.VIEW.DialogForm
                 return false;
             }
 
+            if (txtSex.Text.ToLower() != "nam" && txtSex.Text.ToLower() != "nữ")
+            {
+                MessageBox.Show("Vui lòng nhập lại giới tính.\n" +
+                    "Giới tính nhập vào phải là Nam hoặc Nữ");
+                return false;
+            }
+
+            if (txtUserID.Text.Length < 8)
+            {
+                MessageBox.Show("Vui lòng nhập lại tên đăng nhập.\n" +
+                    "Tên đăng nhập có độ dài tối thiểu là 8 ký tự");
+                return false;
+            } 
+
+            if (!Regex.IsMatch(txtUserID.Text, "^[a-zA-Z0-9]+$"))
+            {
+                MessageBox.Show("Vui lòng nhập lại tên đăng nhập.\n" +
+                    "Tên đăng nhập không được chứa ký tự đặc biệt, dấu cách");
+                return false;
+            }
+
+            if (dbContext.tbl_Reader.Where(x => x.ReaderID == txtUserID.Text) != null)
+            {
+                MessageBox.Show("Vui lòng nhập lại tên đăng nhập.\n" +
+                    "Tên đăng nhập đã được sử dụng");
+                return false;
+            }
+
+            if (txtPassword.Text.Length < 8)
+            {
+                MessageBox.Show("Vui lòng nhập lại mật khẩu.\n" +
+                    "Mật khẩu có độ dài tối thiểu là 8 ký tự");
+                return false;
+            }
+
+            if (!Regex.IsMatch(txtPassword.Text, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$"))
+            {
+                MessageBox.Show("Vui lòng nhập lại mật khẩu.\n" +
+                   "Mật khẩu có độ dài tối thiểu là 8 ký tự, gồm ít nhất một chữ cái viết thường, một chữ cái viết hoa và một chữ số");
+                return false;
+            }
+
+            if (txtPassword.Text != txtRePassword.Text)
+            {
+                MessageBox.Show("Mật khẩu nhập lại không khớp. Vui lòng nhập lại");
+                return false;
+            }
+
             return true;
         }
 
@@ -95,12 +143,10 @@ namespace OldTraffordLibrary.VIEW.DialogForm
                         UserID = txtUserID.Text,
                         Password = txtPassword.Text,
                         UserName = txtUserName.Text,
-                        DateOfBirth = dtDateOfBirth.DateTime,
-                        Sex = cbSex.Text,
+                        Sex = txtSex.Text,
                         PhoneNumber = txtPhoneNum.Text,
                         Email = txtEmail.Text,
-                        Address = txtAddress.Text,
-                        Active = rbActive.Checked ? rbActive.Checked : !rbActive.Checked
+                        Address = txtAddress.Text
                     };
                     dbContext.tbl_User.Add(insertReader);
                     dbContext.SaveChanges();
