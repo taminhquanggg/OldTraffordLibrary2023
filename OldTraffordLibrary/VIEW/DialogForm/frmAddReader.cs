@@ -105,6 +105,13 @@ namespace OldTraffordLibrary.VIEW.DialogForm
                 return false;
             }
 
+            if (txtSex.Text.ToLower() != "nam" && txtSex.Text.ToLower() != "nữ")
+            {
+                MessageBox.Show("Vui lòng nhập lại giới tính.\n" +
+                    "Giới tính nhập vào phải là Nam hoặc Nữ");
+                return false;
+            }
+
             if (txtPhoneNum.Text.Length > 10)
             {
                 MessageBox.Show("Vui lòng nhập lại số điện thoại.\n" +

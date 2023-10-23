@@ -27,92 +27,57 @@ namespace OldTraffordLibrary.VIEW.DialogForm
            
         }
 
-        bool IsNullOrEmptyTextBox(TextEdit textBox, string errorMessage)
+        private bool ValidateInputs()
         {
-            if (String.IsNullOrEmpty(textBox.Text.Trim()))
+            if (String.IsNullOrEmpty(txtUserName.Text) ||
+                String.IsNullOrEmpty(txtPhoneNum.Text) ||
+                String.IsNullOrEmpty(txtEmail.Text) ||
+                String.IsNullOrEmpty(txtAddress.Text) ||
+                String.IsNullOrEmpty(txtSex.Text) ||
+                String.IsNullOrEmpty(txtUserID.Text) ||
+                String.IsNullOrEmpty(txtPassword.Text))
             {
-                MessageBox.Show(errorMessage);
-                textBox.Focus();
-                return true;
-            }
-            return false;
-        }
-
-        static bool ContainsSpecialCharacter(TextEdit textBox, string format, string errorMessage)
-        {
-            if (Regex.IsMatch(textBox.Text.Trim(), format))
-            {
-                MessageBox.Show(errorMessage);
-                textBox.Focus();
-                return true;
-            }
-            return false;
-        }
-
-        bool ValidateInputs()
-        {
-            if (IsNullOrEmptyTextBox(txtUserName, "Tên cán bộ không được để trống !"))
-                return false;
-
-            if (ContainsSpecialCharacter(txtUserName, @"[^\p{L}\s]", "Tên cán bộ không được chứa kí tự đặc biệt hoặc số !"))
-                return false;
-
-            if (dtDateOfBirth.DateTime == null)
-            {
-                MessageBox.Show("Ngày sinh không được để trống !");
-                dtDateOfBirth.Focus();
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin trước khi thêm mới !");
                 return false;
             }
 
-            if (String.IsNullOrEmpty(cbSex.Text.Trim()))
+            if (!Regex.IsMatch(txtUserName.Text, @"^([A-Z][a-z]+)+$"))
             {
-                MessageBox.Show("Giới tính không được để trống !");
-                cbSex.Focus();
+                MessageBox.Show("Vui lòng nhập lại tên cán bộ.\n" +
+                                "Tên cán bộ được tạo nên bởi các chữ cái.\n" +
+                                "Họ tên phân tách với nhau bằng dấu cách.\n" +
+                                "Viết hoa chữ cái đầu tiên và mỗi chữ cái sau dấu cách.\n" +
+                                "Các chữ cái còn lại viết thường.");
                 return false;
             }
 
-            if (IsNullOrEmptyTextBox(txtPhoneNum, "Số điện thoại không được để trống !"))
-                return false;
-
-            if (ContainsSpecialCharacter(txtPhoneNum, "^(02|03|05|07|09)\\d{8}$", "Số điện thoại không hợp lệ !"))
-                return false;
-
-            if (IsNullOrEmptyTextBox(txtEmail, "Email không được để trống !"))
-                return false;
-
-            if (ContainsSpecialCharacter(txtEmail, @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", "Email không hợp lệ !"))
-                return false;
-
-            if (IsNullOrEmptyTextBox(txtAddress, "Địa chỉ không được để trống !"))
-                return false;
-
-            if (IsNullOrEmptyTextBox(txtUserID, "Tên đăng nhập không được để trống !"))
-                return false;
-
-            if (ContainsSpecialCharacter(txtUserID, @"^.{8,}$", "Tên đăng nhập phải từ 8 ký tự trở lên !"))
-                return false;
-
-            if (dbContext.tbl_User.Find(txtUserID.Text.Trim()) != null)
+            if (!Regex.IsMatch(txtPhoneNum.Text, @"^(02|03|05|08|07|09)\d{8}$"))
             {
-                MessageBox.Show("Tên đăng nhập đã tồn tại, vui lòng chọn tên đăng nhập khác !");
-                txtUserID.Focus();
+                MessageBox.Show("Vui lòng nhập lại số điện thoại.\n" +
+                    "Số điện thoại phải bắt đầu bằng các cặp số: 02, 03, 05,08, 07, 09. Còn lại là các ký tự số");
                 return false;
             }
 
-            if (IsNullOrEmptyTextBox(txtPassword, "Mật khẩu không được để trống !"))
-                return false;
-
-            if (ContainsSpecialCharacter(txtRePassword, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$",
-                @"Mật khẩu phải từ 8 ký tự trở lên và có ít nhất 1 ký tự chữ thường, ít nhất một ký tự chữ hoa, ít nhất một ký tự số !"))
-                return false;
-
-            if (IsNullOrEmptyTextBox(txtRePassword, "Mật khẩu nhập lại không được để trống !"))
-                return false;
-
-            if (txtRePassword.Text != txtPassword.Text)
+            if (!Regex.IsMatch(txtEmail.Text, @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(gmail\.com|outlook\.com|e\.tlu\.edu\.vn)$"))
             {
-                MessageBox.Show("Mật khẩu nhập lại không khớp !");
-                txtRePassword.Focus();
+                MessageBox.Show("Vui lòng nhập lại Email.\n" +
+                  "Email hợp lệ là Email tuân thủ theo định dạng: ten@example.com. \n" +
+                  "Với 2 phần: phần trước ký tự “@” gọi là username và phần sau ký tự “@” gọi là domain name. \n" +
+                  "Phần username là chuỗi ký tự không được chứa ký tự đặc biệt hoặc dấu cách. " +
+                  "Phần domain name thuộc một trong các domain sau: gmail.com, outlook.com, e.tlu.edu.vn.");
+            }
+
+            if (txtAddress.Text.Length > 100)
+            {
+                MessageBox.Show("Vui lòng nhập lại địa chỉ.\n" +
+                    "Địa chỉ có tối đa 100 ký tự");
+                return false;
+            }
+
+            if (Regex.IsMatch(txtAddress.Text, @"[^a-zA-Z0-9\s]"))
+            {
+                MessageBox.Show("Vui lòng nhập lại địa chỉ.\n" +
+                    "Địa chỉ không được chứa ký tự đặc biệt");
                 return false;
             }
 
